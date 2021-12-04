@@ -51,7 +51,7 @@
                         <a href="#">
 
                             <div class="cardapio-item-image">
-                                <img src="{{asset('img/cardapio/<?php echo $prato->nome; ?>.jpg')}}" alt="camarao"/>
+                                <img src="{{asset("img/cardapio/$prato->id.jpg")}}" alt="prato principal"/>
 
                             </div>
 

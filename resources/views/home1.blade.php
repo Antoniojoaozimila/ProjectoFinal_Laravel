@@ -33,7 +33,7 @@
         <div class="cardapio small-11 large-12 columns no-padding small-centered">
             <div class="global-page-container">
                 <div class="cardapio-title small-12 columns no-padding">
-                <h3>Cardapio</h3>
+                <h3>Cardapios EM Destaque</h3>
                 <hr></hr>
                 </div>
             </div>
@@ -44,54 +44,38 @@
                 <div class="slider-cardapio">
                     <div class="slider-002 small-12 small-centered columns">
 
-                      <?php
-/*
-                        $server = 'localhost';
-                        $user = 'root';
-                        $password = '';
-                        $db_name = 'restaurante';
-                        $port = '3306';
+                 @foreach ($pratos as $prato)
+                  @if ($prato->destaque==1)
+                  <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
+                    <div class="cardapio-item">
+                        <a href="#">
 
-                        $db_connect = new mysqli($server,$user,$password,$db_name,$port);
-                        mysqli_set_charset($db_connect,"utf8");
+                            <div class="cardapio-item-image">
+                                <img src="{{asset("img/cardapio/$prato->id.jpg")}}" alt="Prato principal"/>
 
-                        if ($db_connect->connect_error) {
-                            echo 'Falha: ' . $db_connect->connect_error;
-                        } else {
-                            //echo 'Conexão feita com sucesso' . '<br><br>';
-                            $sql = "SELECT * FROM pratos WHERE destaque=1 ";
-                            $result = $db_connect->query($sql);
+                            </div>
 
-                            if($result->num_rows>0){
-                                while($row = $result->fetch_assoc()){ ?>
-
-                                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                                    <div class="cardapio-item">
-                                        <a href="prato.php?prato=<?php echo $row['codigo']; ?>">
-
-                                            <div class="cardapio-item-image">
-                                                <img src="img/cardapio/<?php echo $row['codigo']; ?>.jpg" alt="camarao"/>
-                                            </div>
-
-                                            <div class="item-info">
+                            <div class="item-info">
 
 
-                                                <div class="title"><?php echo $row['nome']; ?></div>
-                                            </div>
+                                <div class="title"><?php echo  $prato->nome; ?></div>
+                            </div>
 
-                                            <div class="gradient-filter">
-                                            </div>
+                            <div class="gradient-filter">
+                            </div>
 
-                                        </a>
-                                    </div>
-                                </div>
-                               <?php }
-                            } else{
-                                'Nao ha destaques';
-                            }
-                        }
-                        */
-                        ?>
+                        </a>
+                    </div>
+                </div>
+
+
+                  @endif
+
+
+
+
+                 @endforeach
+
 
                     </div>
                 </div>

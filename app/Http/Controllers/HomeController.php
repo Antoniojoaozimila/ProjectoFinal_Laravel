@@ -54,7 +54,7 @@ class HomeController extends Controller
 
         {
 
-            echo view ('cliente.loginAdmin');
+            echo view ('auth.login');
 
         }
         public function reserva()
@@ -66,10 +66,12 @@ class HomeController extends Controller
 
 
         }
-        public function descricaoPrato()
+        public function descricaoPrato($id)
 
         {
-            $pratos=Prato::all();
+
+           $pratos=Prato::find($id);
+            //$pratos=Prato::all();
             echo view ('layout.header');
             echo view ('cliente.descricaoPrato',compact('pratos'));
             echo view ('layout.footer');
@@ -80,7 +82,7 @@ class HomeController extends Controller
 
         {
             echo view ('layout.header');
-            echo view ('cliente.registoCliente');
+            echo view ('auth.register');
             echo view ('layout.footer');
 
         }
@@ -129,6 +131,14 @@ class HomeController extends Controller
             return redirect('admin')
                 ->with('success', 'deleted successfully');
         }
+
+        public function destroy($id)
+    {
+        if (Prato::destroy($id)) {
+            return redirect()->back()->with('deleted', 'Deleted successfully');
+        }
+        return redirect()->back()->with('delete-failed', 'Could not delete');
+    }
 
         public function editarView($id)
 

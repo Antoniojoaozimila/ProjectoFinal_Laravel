@@ -36,13 +36,18 @@
                     <div class="table">
                         <div class="table-cell">
                             <ul class="menu-items">
-                                @if (!Auth::guest())
-                                    <li> <a href="{{ route('cardapio') }}">cardapio</a></li>
-                                    <li> <a href="{{ route('reserva') }}">Reserva</a></li>
-                                    <li> <a href="{{ route('admin') }}">Admin</a></li>
+
+
+
+                                 @if(Auth::user()->is_admin==1)
+                                <a href="{{ route('cardapio') }}">cardapio</a></li>
+                                <li> <a href="{{ route('reserva') }}">Reserva</a></li>
+                                <li> <a href="{{ route('admin') }}">Admin</a></li>
+
                                 @else
-                                <li> <a href="{{ route('registoCliente') }}">Registo</a></li>
-                                <li> <a href="{{ route('login') }}">login</a></li>
+                                <li> <a href="{{ route('reserva') }}">cardapio</a></li>
+                                <li> <a href="{{ route('reserva') }}">Reservar</a></li>
+
 
                                 @endif
 

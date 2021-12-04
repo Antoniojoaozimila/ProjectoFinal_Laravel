@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     {
 
-        echo view ('cliente.loginAdmin');
+        echo view ('auth.login');
 
     }
     public function reserva()
@@ -53,8 +53,20 @@ class HomeController extends Controller
 
     {
         echo view ('layout.header');
-        echo view ('cliente.registoCliente');
+        echo view ('auth.register');
         echo view ('layout.footer');
+
+    }
+    public function descricaoPrato($id)
+
+    {
+        
+        $pratos=Prato::find($id);
+        //$pratos=Prato::all();
+        echo view ('layout.header');
+        echo view ('cliente.descricaoPrato',compact('pratos'));
+        echo view ('layout.footer');
+
 
     }
     public function registarPratos(Request $request)

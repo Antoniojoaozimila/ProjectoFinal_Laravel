@@ -1,27 +1,30 @@
  <div class="product-page small-11 large-12 columns no-padding small-centered">
 
             <div class="global-page-container">
-                <?php $idfind=$_GET['id'];?>
+                <?php //$prato->id=$_GET['id'];
+
+
+                ?>
 
 
 
 
 
-@foreach ($pratos as $prato)
-    @if ($prato->id==$idfind)
+{{-- @foreach ($pratos as $prato) --}}
+    {{-- @if ($prato->id==6) --}}
     <div class="product-section">
         <div class="product-info small-12 large-5 columns no-padding">
-            <h3><?php echo $prato->nome?></h3>
-            <h4><?php echo $prato->categoria?></h4>
-            <p><?php echo $prato->descricao?>
+            <h3>{{$pratos->nome}}</h3>
+            <h4>{{$pratos->categoria}}</h4>
+            <p>{{$pratos->descricao}}>
             </p>
 
-            <h5><b>Preço: </b>R$ <?php echo $prato->preco?></h5>
-            <h5><b>Calorias: </b><?php echo $prato->alorias?></h5>
+            <h5><b>Preço: </b>R$ {{$pratos->preco}}</h5>
+            <h5><b>Calorias: </b>{{$pratos->calorias}}</h5>
         </div>
 
         <div class="product-picture small-12 large-7 columns no-padding">
-            <img src="img/cardapio/<?php echo $prato->nome?>.jpg" alt="Foto do prato: <?php echo $prato->nome?>">
+            <img src="{{asset("img/cardapio/$pratos->id.jpg")}}" alt="Foto do prato: {{$pratos->nome}}">
         </div>
 
     </div>
@@ -33,11 +36,11 @@
 </div>
 </div>
 
-    @endif
+    {{-- @endif --}}
 
 
 
- @endforeach
+ {{-- @endforeach --}}
 </div>
 </div>
 

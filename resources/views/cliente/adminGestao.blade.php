@@ -90,7 +90,7 @@
     <td>{{$prato->destaque}}</td>
     <td>
 <a  href="{{URL::to('editarView')}}/{{$prato->id}}" class="btn btn-success">editar</a>
-<a  href="#" class="btn btn-success">excluir</a>
+<a  href="{{ URL::to('delete') }}/{{ $prato->id }}" class="btn btn-success">excluir</a>
     </td>
   </tr>
 
