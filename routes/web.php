@@ -20,4 +20,9 @@ Route::get('/reserva',[HomeController::class,'reserva'])->name('reserva');
 Route::get('/registoCliente',[HomeController::class,'registoCliente'])->name('registoCliente');
 Route::Post('/registarPratos',[HomeController::class,'registarPratos'])->name('registarPratos');
 Route::Post('/editarPratos/{id}',[HomeController::class,'editarPratos'])->name('editarPratos');
-Route::Post('/editarView/{id}',[HomeController::class,'editarView'])->name('editarView');
+Route::Get('/editarView/{id}',[HomeController::class,'editarView'])->name('editarView');
+Route::Get('/descricaoPrato',[HomeController::class,'descricaoPrato'])->name('descricaoPrato');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

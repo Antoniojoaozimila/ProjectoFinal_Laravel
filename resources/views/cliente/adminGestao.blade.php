@@ -1,21 +1,4 @@
-<?php /*include "conexao.php"; include "DAOcardapio.php";
-  // fetch dados actualizados
-	if (isset($_GET['editar'])) {
-		$id = $_GET['editar'];
-		$editar_v=true;
 
-		$rec = mysqli_query($conn, "SELECT * FROM pratos WHERE id=$id");
-		$record = mysqli_fetch_assoc($rec);
-		$nome = $record['nome'];
-		$categoria = $record['categoria'];
-        $descricao=$record['descricao'];
-        $preco=$record['preco'];
-        $calorias=$record['calorias'];
-        $destaque=$record['destaque'];
-        $id = $record['id'];
-  }
-  */
-  ?>
 
 <div class="Container">
     <div class="row">
@@ -47,7 +30,7 @@
                <label for="descricao" class="input-group"></label>
 
                <textarea type="text" name="descricao" class="form-control" placeholder="descriação"  autofocus="" ></textarea>
-
+             </div>
 
              <div class="input-group">
                <label for="preco" class="input-group"></label>
@@ -106,7 +89,7 @@
     <td>{{$prato->calorias}}</td>
     <td>{{$prato->destaque}}</td>
     <td>
-<a  href="{{URL::to('cliente.editarPratos')}}/$prato->id" class="btn btn-success">editar</a>
+<a  href="{{URL::to('editarView')}}/{{$prato->id}}" class="btn btn-success">editar</a>
 <a  href="#" class="btn btn-success">excluir</a>
     </td>
   </tr>
