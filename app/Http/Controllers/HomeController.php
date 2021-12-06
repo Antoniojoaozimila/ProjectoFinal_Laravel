@@ -92,7 +92,7 @@ class HomeController extends Controller
                     $mensagem =$request->mensagem;
                     $telefone = $request->telefone;
                     $data =$request->data;
-                    $numero = $request->inum_pessoas;
+                    $numero = $request->num_pessoas;
 
 
 

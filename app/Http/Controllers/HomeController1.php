@@ -57,97 +57,88 @@ class HomeController extends Controller
     {
 
 
-         // Inserir Arquivos do PHPMailer
-        // require '{{phpmailer/Exception.php}}';
-        // require '{{phpmailer/PHPMailer.php}}';
-        // require '{{phpmailer/SMTP.php}}';
+
+        $nome =$request->nome;
+        $email = $request->email;
+        $mensagem =$request->mensagem;
+        $telefone = $request->telefone;
+        $data =$request->data;
+        $numero = $request->num_pessoas;
 
 
 
-                $nome =$request->input('nome');
-                $email = $request->input('email');
-                $mensagem =$request->input('mensagem');
-                $telefone = $request->input('telefone');
-                $data =$request->input('data');
-                $numero = $request->input('num_pessoas');
 
-          /*      $nome = clean_input($nome);
-                $email = clean_input($email);
-                $mensagem = clean_input($mensagem);
-                $telefone = clean_input($telefone);
-                $data = clean_input($data);
-                $numero = clean_input($numero);
+        $texto_msg = 'E-mail enviado do sistema de reservas do site' . '<br><br>' .
+        'Nome: ' . $nome . '<br>' .
+        'E-mail: ' . $email . '<br>' .
+        'Numero de pessoas: ' . $numero . '<br>' .
+        'Telefone: ' . $telefone . '<br>' .
+        'Data: ' . $data . '<br>' .
+        'Mensagem: ' . $mensagem . '<br>';
 
+        // Criação do Objeto da Classe PHPMailer
+        require 'PHPMailer/vendor/autoload.php';
+         $mail = new PHPMailer(true);
+         $mail->CharSet="UTF-8";
 
-                $texto_msg = 'E-mail enviado do sistema de reservas do site' . '<br><br>' .
-                'Nome: ' . $nome . '<br>' .
-                'E-mail: ' . $email . '<br>' .
-                'Numero de pessoas: ' . $numero . '<br>' .
-                'Telefone: ' . $telefone . '<br>' .
-                'Data: ' . $data . '<br>' .
-                'Mensagem: ' . $mensagem . '<br>';
+        try {
 
-                // Criação do Objeto da Classe PHPMailer
-                 $mail = new PHPMailer(true);
-                 $mail->CharSet="UTF-8";
+     //Retire o comentário abaixo para soltar detalhes do envio
+       $mail->SMTPDebug = 0;
 
-                try {
+     // Usar SMTP para o envio
+     $mail->isSMTP();
 
-             //Retire o comentário abaixo para soltar detalhes do envio
-             // $mail->SMTPDebug = 2;
+     // Detalhes do servidor (No nosso exemplo é o Google)
+     $mail->Host       = env('EMAIL_HOST');
 
-             // Usar SMTP para o envio
-             $mail->isSMTP();
+     // Permitir autenticação SMTP
+     $mail->SMTPAuth = true;
 
-             // Detalhes do servidor (No nosso exemplo é o Google)
-             $mail->Host = 'smtp.gmail.com';
+     // Nome do usuário
+     $mail->Username   = env('EMAIL_USERNAME');
+     // Senha do E-mail
+     $mail->Password   = env('EMAIL_PASSWORD');
 
-             // Permitir autenticação SMTP
-             $mail->SMTPAuth = true;
+     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+     // Tipo de protocolo de segurança
+     $mail->SMTPSecure = 'tls';
 
-             // Nome do usuário
-             $mail->Username = 'trabalhopw2021@gmail.com';
-             // Senha do E-mail
-             $mail->Password = 'helioalves2021';
-             // Tipo de protocolo de segurança
-             $mail->SMTPSecure = 'tls';
-
-             // Porta de conexão com o servidor
-             $mail->Port = 587;
+     // Porta de conexão com o servidor
+     $mail->Port = 587;
 
 
-             // Garantir a autenticação com o Google
-             $mail->SMTPOptions = array(
-                 'ssl' => array(
-                     'verify_peer' => false,
-                     'verify_peer_name' => false,
-                     'allow_self_signed' => true
-                 )
-             );
+     // Garantir a autenticação com o Google
+     $mail->SMTPOptions = array(
+         'ssl' => array(
+             'verify_peer' => false,
+             'verify_peer_name' => false,
+             'allow_self_signed' => true
+         )
+     );
 
-             // Remetente
-             $mail->setFrom($email, $nome);
+     // Remetente
+     $mail->setFrom($email, $nome);
 
-             // Destinatário
-             $mail->addAddress('trabalhopw2021@gmail.com', 'Benjamim');
+     // Destinatário
+     $mail->addAddress('trabalhopw2021@gmail.com', 'Benjamim');
 
-             // Conteúdo
+     // Conteúdo
 
-             // Define conteúdo como HTML
-             $mail->isHTML(true);
+     // Define conteúdo como HTML
+     $mail->isHTML(true);
 
-             // Assunto
-             $mail->Subject = 'Pedido de Reserva';
-             $mail->Body    = $texto_msg;
-             $mail->AltBody = $texto_msg;
+     // Assunto
+     $mail->Subject = 'Pedido de Reserva';
+     $mail->Body    = $texto_msg;
+     $mail->AltBody = $texto_msg;
 
-             // Enviar E-mail
-             $mail->send();
-             echo 'Mensagem enviada com sucesso';
-         } catch (Exception $e) {
-             echo 'A mensagem não foi enviada pelo seguinte motivo: ', $mail->ErrorInfo;
-         }
-*/
+     // Enviar E-mail
+     $mail->send();
+     echo 'Mensagem enviada com sucesso';
+ } catch (Exception $e) {
+     echo 'A mensagem não foi enviada pelo seguinte motivo: ', $mail->ErrorInfo;
+ }
     }
     public function registoCliente()
 

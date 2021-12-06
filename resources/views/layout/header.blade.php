@@ -40,13 +40,19 @@
 
 
                                  @if(Auth::user()->is_admin==1)
-                                <a href="{{ route('cardapio') }}">cardapio</a></li>
+                                <li> <a href="{{ route('cardapio') }}">cardapio</a></li>
                                 <li> <a href="{{ route('reserva') }}">Reserva</a></li>
                                 <li> <a href="{{ route('admin') }}">Admin</a></li>
+                                <li> <a href="{{ route('login') }}">Logout</a></li>
+
+
+
 
                                 @else
-                                <li> <a href="{{ route('reserva') }}">cardapio</a></li>
+                                <li> <a href="{{ route('cardapio') }}">cardapio</a></li>
                                 <li> <a href="{{ route('reserva') }}">Reservar</a></li>
+                                <li> <a href="{{ route('login') }}">Logout</a></li>
+
 
 
                                 @endif

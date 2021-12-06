@@ -48,7 +48,7 @@
                   @if ($prato->destaque==1)
                   <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
                     <div class="cardapio-item">
-                        <a href="#">
+                        <a href="{{url('descricaoPrato')}}/{{$prato->id}}">
 
                             <div class="cardapio-item-image">
                                 <img src="{{asset("img/cardapio/$prato->id.jpg")}}" alt="Prato principal"/>
