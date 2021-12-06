@@ -9,8 +9,8 @@
 
         <div class="reservation-form small-12 columns no-padding">
 
-            <form action="index.php#contact-us" method="post">
-
+            <form action ="{{url('presenca')}}" method="Post">
+               @csrf
                 <div class="form-part1 small-12 large-8 xlarge-7 columns no-padding">
 
                     <input type="text" name="nome" class="field" placeholder="Nome completo" required/>
@@ -29,15 +29,16 @@
 
                     <input type="text" name="num_pessoas" class="field" placeholder="Número de pessoas" required/>
 
-                    <input type="submit" name="submit" value="Reservar"/>
+
+				<button type="submit"  class="btn btn-outline-success">reservar</button>
 
                 </div>
 
 
             </form>
             <?php
-            /*
-            // Inserir Arquivos do PHPMailer
+/*
+           // Inserir Arquivos do PHPMailer
             require 'phpmailer/Exception.php';
             require 'phpmailer/PHPMailer.php';
             require 'phpmailer/SMTP.php';
@@ -65,7 +66,7 @@
                    $data = $_POST['data'];
                    $numero = $_POST['num_pessoas'];
 
-                    $nome = clean_input($nome);
+                   $nome = clean_input($nome);
                    $email = clean_input($email);
                    $mensagem = clean_input($mensagem);
                    $telefone = clean_input($telefone);
@@ -144,8 +145,8 @@
 
                 }
 
-
 */
+
 
             ?>
 

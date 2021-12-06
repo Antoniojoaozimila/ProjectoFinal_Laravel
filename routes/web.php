@@ -23,5 +23,8 @@ Route::Post('/editarPratos/{id}',[HomeController::class,'editarPratos'])->name('
 Route::Get('/editarView/{id}',[HomeController::class,'editarView'])->name('editarView');
 Route::Get('/descricaoPrato/{id}',[HomeController::class,'descricaoPrato'])->name('descricaoPrato');
 Route::get('delete/{id}',[HomeController::class,'destroy'])->name('destroy');
+Route::Post('/presenca',[HomeController::class,'presenca'])->name('presenca');
+
+
 Auth::routes();
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
