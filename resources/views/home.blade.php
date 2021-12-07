@@ -46,6 +46,9 @@
 
                  @foreach ($pratos as $prato)
                   @if ($prato->destaque==1)
+                {{-- <div class="category-slider small-12 columns no-padding">
+                    <h4>{{$prato->categoria}}</h4> --}}
+
                   <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
                     <div class="cardapio-item">
                         <a href="{{url('descricaoPrato')}}/{{$prato->id}}">
@@ -56,9 +59,7 @@
                             </div>
 
                             <div class="item-info">
-
-
-                                <div class="title"><?php echo  $prato->nome; ?></div>
+                                 <div class="title"><?php echo  $prato->nome; ?></div>
                             </div>
 
                             <div class="gradient-filter">
@@ -66,9 +67,9 @@
 
                         </a>
                     </div>
-                </div>
+                {{-- </div> --}}
 
-
+            </div>
                   @endif
 
 

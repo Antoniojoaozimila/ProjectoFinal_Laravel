@@ -212,7 +212,6 @@ class HomeController extends Controller
         public function editarPratos(Request $request, $id )
         {
             $pratosbyId=Prato::find($id);
-            $pratosbyId= new Prato();
             $pratosbyId->nome=$request->input('nome');
             $pratosbyId->categoria=$request->input('categoria');
             $pratosbyId->descricao=$request->input('descricao');
@@ -221,6 +220,7 @@ class HomeController extends Controller
             $pratosbyId->destaque=$request->input('destaque');
             $pratosbyId->update();
 
+            echo  ('alertas.atulizar');
             return redirect('admin')
             ->with('success', 'Update successfully');
 

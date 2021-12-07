@@ -135,7 +135,10 @@ class HomeController extends Controller
 
      // Enviar E-mail
      $mail->send();
-     echo 'Mensagem enviada com sucesso';
+
+     return redirect('presenca')
+     ->with('success', 'Mensagem enviada com sucesso');
+     //echo 'Mensagem enviada com sucesso';
  } catch (Exception $e) {
      echo 'A mensagem não foi enviada pelo seguinte motivo: ', $mail->ErrorInfo;
  }
